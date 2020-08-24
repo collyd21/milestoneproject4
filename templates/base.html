@@ -21,6 +21,7 @@
     {% endblock %}
 
     {% block corejs %}
+        <script src="https://kit.fontawesome.com/195bb5fc1b.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -32,7 +33,70 @@
     <title>Competitions Site {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top"></header>
+    <header class="container-fluid fixed-top">
+    	<nav class="navbar navbar-expand-lg">
+		<div class="d-none d-md-block">
+			<a class="navbar-brand" href="#">Comps Site</a>
+		</div>
+
+		<button id="toggle-btn" class="navbar-toggler d-sm-none" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav mx-auto d-md-block">
+				<li class="list-inline-item">
+					<a class="nav-link" href="#">Competitions</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="nav-link" href="#">Winners</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="nav-link" href="#">How It Works</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="nav-link" href="#">Contact us</a>
+				</li>
+			</ul>
+		</div>
+		<ul class="navbar-nav justify-content-end">
+			<li class="nav-item dropdown">
+				<a class="nav-link pl-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">
+					<i class="fas fa-user" aria-hidden="true"></i> Account
+				</a>
+
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}
+                                    <a href="" class="dropdown-item">Product Management</a>
+                                {% endif %}
+                                <a href="" class="dropdown-item">My Profile</a>
+                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                    {% else %}
+                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                    {% endif %}
+                </div>
+
+			</li>
+
+			<li class="cart my-auto">
+				<a class="nav-link" href="#">
+					<i class="fas fa-shopping-bag" aria-hidden="true"></i>
+					<span class="grand_total">
+                        {% if grand_total %}
+                            ${{ grand_total|floatformat:2 }}
+                        {% else %}
+                            £0.00
+                        {% endif %}
+                    </span>
+				</a>
+			</li>
+		</ul>
+
+	</nav>
+    </header>
 
     {% if messages %}
         <div class="message-container"></div>
