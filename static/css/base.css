@@ -1,0 +1,21 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar {
+background: #f1f0ee;
+}
+
+.navbar-nav a {
+    color :  black;
+}
+
+.navbar-nav i {
+    color : grey;
+}
+
+.jumbotron {
+ background-image: url('/media/new-bg.png');
+ background-size: cover;
+ height: 550px;
+}
