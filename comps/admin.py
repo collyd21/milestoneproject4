@@ -2,4 +2,19 @@ from django.contrib import admin
 from .models import Comp
 
 # Register your models here.
-admin.site.register(Comp)
+
+
+class CompAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'size_range',
+        'price',
+        'entries',
+        'end_date',
+        'image',
+    )
+
+    ordering = ('image',)
+
+
+admin.site.register(Comp, CompAdmin)
