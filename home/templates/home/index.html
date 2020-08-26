@@ -8,8 +8,8 @@
     </div>
 
 <!-- Title -->
-    <h1 class= "text-center title">Latest Competitions</h1>
-        <p class= "text-center">Check out the latest items up for grabs</p>
+    <h1 class= "text-center title"><strong>Latest Competitions</strong></h1>
+        <h4 class= "text-center text-all-comp">Check out the latest items up for grabs</h4>
 
 <!-- Competitions Cards -->
     <div class="container">
@@ -20,8 +20,7 @@
 					<img src="{{ comp.image_url }}" class="card-img-top" alt="{{ comp.name }}">
 					    <div class="card-body">
 					        <h5 class="card-title">{{ comp.name }}</h5>
-					        <p class="card-text">€ 
-                            {{ comp.price }}</p> 
+					        <p class="card-text">€ {{ comp.price }}</p> 
 					    </div>
 				</div>
         </div>
