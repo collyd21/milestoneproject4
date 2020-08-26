@@ -4,16 +4,24 @@
 {% block content %}
 
 <!-- Title -->
-    <h1 class= "text-center title">Latest Competitions</h1>
-        <p class= "text-center">Check out the latest items up for grabs</p>
+    <h1 class= "text-center title-all-comp">Latest Competitions</h1>
+        <h3 class= "text-center text-all-comp">Check out the latest items up for grabs</h3>
 
 <!-- Competitions Cards -->
     <div class="container">
-		<div class="row">
-			<div class="col">
-                {{ comps }}    
-			</div>
-		</div>
+		<div class="text-center row mb-5 mt-5">
+        {% for comp in comps %}
+			<div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="card mb-4 text-center">
+					<img src="{{ comp.image_url }}" class="card-img-top" alt="{{ comp.name }}">
+					    <div class="card-body">
+					        <h5 class="card-title">{{ comp.name }}</h5>
+					        <p class="card-text"> Entry - € <strong>{{ comp.price }}</strong></p> 
+					    </div>
+				</div>
+        </div>
+        {% endfor %}
+    </div>
     </div>
 
 {% endblock %} 

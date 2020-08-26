@@ -14,15 +14,18 @@
 <!-- Competitions Cards -->
     <div class="container">
 		<div class="text-center row mb-5 mt-5">
+        {% for comp in comps|slice:":3" %}
 			<div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="card mb-4">
-					<img src="#" class="card-img-top" alt="Image Name">
+					<img src="{{ comp.image_url }}" class="card-img-top" alt="{{ comp.name }}">
 					    <div class="card-body">
-					        <h5 class="card-title">Title here</h5>
-					        <p class="card-text">Price here</p>
+					        <h5 class="card-title">{{ comp.name }}</h5>
+					        <p class="card-text">€ 
+                            {{ comp.price }}</p> 
 					    </div>
 				</div>
         </div>
+        {% endfor %}
     </div>
     </div>
 
