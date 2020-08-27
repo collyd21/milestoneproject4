@@ -61,7 +61,7 @@ z-index: 99;
 
 .card-img-top {
     width: 100%;
-    height: 15vw;
+    height: 100%
     object-fit: cover;
 }
 
@@ -115,3 +115,6 @@ z-index: 99;
 .comp-title {
     color:rgb(190, 45, 45);
 }
+
+
+/* CART */

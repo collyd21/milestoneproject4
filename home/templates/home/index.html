@@ -9,7 +9,7 @@
 
 <!-- Title -->
     <h1 class= "text-center title"><strong>Latest Competitions</strong></h1>
-        <h4 class= "text-center text-all-comp">Check out the latest items up for grabs</h4>
+        <h4 class= "text-center text-all-comp">Check out the latest items up for grabs</h4 >
 
 <!-- Competitions Cards -->
     <div class="container">
@@ -17,7 +17,9 @@
         {% for comp in comps|slice:":3" %}
 			<div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="card mb-4">
-					<img src="{{ comp.image_url }}" class="card-img-top" alt="{{ comp.name }}">
+                    <a href="{% url 'comp_info' comp.id %}">
+                        <img src="{{ comp.image_url }}" class="card-img-top" alt="{{ comp.name }}">
+                    </a>
 					    <div class="card-body">
 					        <h5 class="card-title">{{ comp.name }}</h5>
 					        <p class="card-text">€ {{ comp.price }}</p> 

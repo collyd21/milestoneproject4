@@ -86,11 +86,11 @@
 			</li>
 
 			<li class="cart my-auto">
-				<a class="nav-link" href="#">
-					<i class="fas fa-shopping-bag" aria-hidden="true"></i>
-					<span class="grand_total">
-                        {% if grand_total %}
-                            ${{ grand_total|floatformat:2 }}
+				<a class="nav-link" href="{% url 'view_cart' %}">
+					<i class="fas fa-cart-plus" aria-hidden="true"></i>
+					<span class="total">
+                        {% if total %}
+                            ${{ total|floatformat:2 }}
                         {% else %}
                             £0.00
                         {% endif %}
