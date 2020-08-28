@@ -118,3 +118,18 @@ z-index: 99;
 
 
 /* CART */
+.bg-grey {
+    background-color: rgba(240, 240, 240, 0.904);
+}
+
+.total-colour {
+    color:rgb(190, 45, 45);
+}
+
+.trash-colour {
+    color:red;
+}
+
+.trash-colour:hover {
+    color:rgb(190, 45, 45);
+}

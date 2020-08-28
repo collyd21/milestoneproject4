@@ -19,17 +19,18 @@
 				<h5><strong>Sizes Available:</strong> {{ comp.size_range }}</h5>
 				<h5><strong>Max Entries:</strong> {{ comp.entries }}</h5>
 				<h5><strong>Entry:</strong> € {{ comp.price }}</h5>
-				<form method="POST" action="{% url 'add_to_cart' comp.id %}" accept-charset="UTF-8"><input name="_token" type="hidden" value="">
+				<form method="POST" action="{% url 'add_to_cart' comp.id %}" accept-charset="UTF-8">
 {% csrf_token %}
 					<div class="form-group w-50">
 						<label for="quantity" class="form-label form-label-required"><strong>Quantity:</strong></label>
-						<select class="form-control custom-select " id="id_qty_{{ product.id }}" name="quantity" required="required" type="number" data-item_id="{{ product.id }}">
+						<select class="form-control custom-select " id="id_qty_{{ comp.id }}" name="quantity" required="required" type="number" data-item_id="{{ comp.id }}">
 <option selected="selected" value="">Choose a quantity</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
 					</div>
 					<div class="button-group">
 						<input class="btn btn-primary" type="submit" value="Add to cart">
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        
 </div>
+<input type="hidden" name="redirect_url" value="{{ request.path }}">
 				</form>
 			</div>
 		</div>
@@ -53,10 +54,9 @@
 					</div>
 					<div class="tab-pane" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
 						<div class="text-container">
-							<p>By entering this competition, you have confirmed that you have read and agree to our <a
-									target="_blank" href="#" class="link">terms and conditions</a>.</p>
+							<p>By entering this competition, you have confirmed that you have read and agree to our
+                            <a target="_blank" href="#" class="link">terms and conditions</a>.</p>
 							<p>For free entry queries please contact us</p>
-							<p></p>
 							<p class="mb-0">The maximum number of entries for this competition is
 								<span class="font-weight-bold">{{ comp.entries }}</span>.</p>
 						</div>
