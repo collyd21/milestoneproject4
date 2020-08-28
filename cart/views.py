@@ -1,11 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 
 # Create your views here.
+
 
 def view_cart(request):
     """ A view that renders the cart contents page """
 
     return render(request, 'cart/cart.html')
+
 
 def add_to_cart(request, item_id):
     """ Add a quantity of the specified competition to the cart """
@@ -21,3 +23,11 @@ def add_to_cart(request, item_id):
 
     request.session['cart'] = cart
     return redirect(redirect_url)
+
+
+def remove_from_cart(request, item_id):
+    """ Remove an item from the cart """
+    cart = request.session.get('cart', {})
+    cart.pop(item_id)
+    request.session['cart'] = cart
+    return redirect(reverse('view_cart'))

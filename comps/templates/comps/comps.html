@@ -15,11 +15,12 @@
                 <div class="card mb-4 text-center">
 					<a href="{% url 'comp_info' comp.id %}">
                         <img src="{{ comp.image_url }}" class="card-img-top" alt="{{ comp.name }}">
-                    </a>
+                    
 					    <div class="card-body">
 					        <h5 class="card-title">{{ comp.name }}</h5>
-					        <p class="card-text"> Entry - € <strong>{{ comp.price }}</strong></p> 
+					        <p class="card-text"> Entry € <strong>{{ comp.price }}</strong></p> 
 					    </div>
+                        </a>
 				</div>
         </div>
         {% endfor %}
