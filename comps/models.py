@@ -2,6 +2,10 @@ from django.db import models
 
 
 class Comp(models.Model):
+
+    class Meta:
+        ordering = ['-end_date']
+
     name = models.CharField(max_length=254)
     size_range = models.TextField()
     description = models.TextField()
