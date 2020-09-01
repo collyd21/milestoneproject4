@@ -38,20 +38,14 @@
 		</div>
 		<div class="col-md-8 order-md-1">
 			<div class="bg-grey rounded p-3 px-3 mb-3 text-uppercase"><strong>Billing Address</strong></div>
-			<form class="needs-validation" novalidate>
+			<form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
 				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="firstName">First name</label>
-						<input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+					<div class="col-md-12 mb-3">
+						<label for="full_name">Full name</label>
+						<input type="text" class="form-control" id="full_name" placeholder="" value="" required>
 						<div class="invalid-feedback">
-							Valid first name is required.
-						</div>
-					</div>
-					<div class="col-md-6 mb-3">
-						<label for="lastName">Last name</label>
-						<input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-						<div class="invalid-feedback">
-							Valid last name is required.
+							Valid name is required.
 						</div>
 					</div>
 				</div>

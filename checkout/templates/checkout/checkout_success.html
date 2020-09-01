@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Title -->
+<h1 class="text-center title-all-comp">Thank You</h1>
+
+<div class="container mt-5">
+
+	<div class="row">
+		<div class="col-md-4 order-md-2 mb-4">
+			<div class="bg-grey rounded p-3 px-3 mb-3 text-uppercase"><strong>Order Complete</strong></div>
+			<p>Your Order is now complete. You will receive a order confirmation soon!</p>
+
+			
+		</div>
+	</div>
+	{% endblock %}
