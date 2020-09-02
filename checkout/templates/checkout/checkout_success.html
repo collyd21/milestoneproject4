@@ -11,13 +11,27 @@
 <h1 class="text-center title-all-comp">Thank You</h1>
 
 <div class="container mt-5">
-
-	<div class="row">
-		<div class="col-md-4 order-md-2 mb-4">
+    <h4>Order Complete!</h4>
+	<hr>
+        <p>Your payment has been successful. You will receive an order confirmation soon!</p>
+    <hr>
+		<div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+                <a href="{% url 'comps' %}" class="btn btn-dark rounded-pill py-2 mb-2 btn-block">Return to Competitions</a>
+		    </div>
+	    </div>
+</div>
+	<!-- <div class="row">
+		<div class="col-md-6 order-md-2 mb-4">
 			<div class="bg-grey rounded p-3 px-3 mb-3 text-uppercase"><strong>Order Complete</strong></div>
-			<p>Your Order is now complete. You will receive a order confirmation soon!</p>
-
-			
+			<p>Your Order is now complete. You will receive an order confirmation soon!</p>
+            <hr>
+        </div>
+    </div>
+        
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <a href="{% url 'comps' %}" class="btn btn-dark rounded-pill py-2 mb-2 btn-block">Return to Competitions</a>
 		</div>
-	</div>
+	</div> -->
 	{% endblock %}

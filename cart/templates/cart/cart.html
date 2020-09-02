@@ -77,13 +77,12 @@
 
 		{% else %}
 		<h4>You haven't copped yet!</h4>
-		<hr color="red">
-		<a href="{% url 'comps' %}" class="btn btn-outline-black rounded-0 btn-lg">
-			<span class="icon">
-                            <i class="far fa-arrow-alt-circle-left"></i>
-                        </span>
-			<span class="text-uppercase">Back to Competitions</span>
-		</a>
+		<hr>
+		    <div class="row">
+                <div class="col-md-4 order-md-2 mb-4">
+                    <a href="{% url 'comps' %}" class="btn btn-dark rounded-pill py-2 mb-2 btn-block">Return to Competitions</a>
+		        </div>
+	        </div>
 		{% endif %}
 	</div>
 </div>
