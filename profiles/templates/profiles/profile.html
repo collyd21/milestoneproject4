@@ -29,6 +29,26 @@
 		<div class="col-md-12 mt-3">
 			<div class="bg-grey rounded p-3 px-3 mb-3 text-uppercase"><strong>My Orders</strong>
         </div>
+{% for order in orders %}
+<ul class="list-group mb-4">
+		<li class="list-group-item">
+					<div class="row">
+				<div class="col-6 mb-1"><h6 class=""><strong>Order Number:</strong> {{ order.order_number }}</h6></div>
+                    <div class="col-6"><h6 class="text-right"><strong>Order Date:</strong> {{ order.date }}</h6></div></div>
+                    {% for item in order.lineitems.all %}
+                        <div class="row">
+                            <div class="col-6">
+							<p class="lh-condensed text-muted">{{ item.comp.name }}</p></div>
+                        <div class="col-6 text-right">
+							<p class="lh-condensed text-muted">Quantity: {{ item.quantity }}</p></div>
+                        </div>
+                        {% endfor %}
+				</li>
+				<li class="list-group-item d-flex justify-content-between">
+					<span>Total</span>
+					<strong class="total-colour">€ {{ order.total }}</strong>
+				</li>
+			</ul>
+            {% endfor %}
 
-		{{ orders }}
 		{% endblock %}
