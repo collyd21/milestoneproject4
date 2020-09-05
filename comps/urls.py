@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.all_comps, name='comps'),
-    path('<comp_id>', views.comp_info, name='comp_info'),
+    path('<int:comp_id>/', views.comp_info, name='comp_info'),
+    path('add/', views.add_comp, name='add_comp'),
 ]

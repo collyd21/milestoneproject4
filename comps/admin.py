@@ -10,7 +10,7 @@ class CompAdmin(admin.ModelAdmin):
         'size_range',
         'price',
         'entries',
-        'end_date',
+        'date',
         'image',
     )
 

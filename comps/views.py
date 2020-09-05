@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Comp
-
-# Create your views here.
+from .forms import CompForm
 
 
 def all_comps(request):
@@ -26,3 +25,14 @@ def comp_info(request, comp_id):
     }
 
     return render(request, 'comps/comp_info.html', context)
+
+
+def add_comp(request):
+    """ Add a competition to the site """
+    form = CompForm()
+    template = 'comps/add_comp.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
