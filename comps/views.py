@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Comp
 from .forms import CompForm
 
@@ -28,8 +29,13 @@ def comp_info(request, comp_id):
     return render(request, 'comps/comp_info.html', context)
 
 
+@login_required
 def add_comp(request):
     """ Add a competition to the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin can do that.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = CompForm(request.POST, request.FILES)
         if form.is_valid():
@@ -49,8 +55,13 @@ def add_comp(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_comp(request, comp_id):
     """ Edit a competition """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin can do that.')
+        return redirect(reverse('home'))
+
     comp = get_object_or_404(Comp, pk=comp_id)
     if request.method == 'POST':
         form = CompForm(request.POST, request.FILES, instance=comp)
@@ -72,8 +83,14 @@ def edit_comp(request, comp_id):
 
     return render(request, template, context)
 
+
+@login_required
 def delete_comp(request, comp_id):
     """ Delete a product from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin can do that.')
+        return redirect(reverse('home'))
+
     comp = get_object_or_404(Comp, pk=comp_id)
     comp.delete()
     messages.success(request, 'Competition successfully deleted!')

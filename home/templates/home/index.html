@@ -11,9 +11,15 @@
     <h1 class= "text-center title"><strong>Latest Competitions</strong></h1>
         <h4 class= "text-center text-all-comp">Check out the latest items up for grabs</h4 >
 
-<!-- Competitions Cards -->
     <div class="container">
-		<div class="text-center row mb-5 mt-5">
+
+<!-- Link for all Competitions -->
+    <div class="text-right">
+        <a class="btn btn-dark rounded-pill py-2 mb-2" href="{% url 'comps' %}">All Competitions</a>
+    </div>
+
+<!-- Competitions Cards -->
+        <div class="text-center row mb-5 mt-5">
         {% for comp in comps|slice:":3" %}
 			<div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="card mb-4">

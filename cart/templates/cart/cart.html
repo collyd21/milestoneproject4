@@ -68,15 +68,19 @@
 						<a href="{% url 'comps' %}" class="btn bg-grey rounded-pill py-2 mb-2 btn-block">Return to
 							Competitions</a>
 					</div>
+                {% if user.is_authenticated %}
 					<div class="col-lg-6 col-xs-12">
 						<a href="{% url 'checkout' %}" class="btn btn-dark rounded-pill py-2 mb-2 btn-block">Proceed to checkout</a>
 					</div>
+                {% else %}
+                <p>You must be <a href="{% url 'account_login' %}" >logged in</a>  to checkout!</p>
+                {% endif %}
 				</div>
 			</div>
 		</div>
 
 		{% else %}
-		<h4>You haven't copped yet!</h4>
+		<h4>You haven't added any entries yet!</h4>
 		<hr>
 		    <div class="row">
                 <div class="col-md-4 order-md-2 mb-4">
