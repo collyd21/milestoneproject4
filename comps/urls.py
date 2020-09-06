@@ -6,4 +6,5 @@ urlpatterns = [
     path('<int:comp_id>/', views.comp_info, name='comp_info'),
     path('add/', views.add_comp, name='add_comp'),
     path('edit/<int:comp_id>/', views.edit_comp, name='edit_comp'),
+    path('delete/<int:comp_id>/', views.delete_comp, name='delete_comp'),
 ]

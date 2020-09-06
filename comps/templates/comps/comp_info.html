@@ -32,7 +32,14 @@
 </div>
 <input type="hidden" name="redirect_url" value="{{ request.path }}">
 				</form>
+                {% if request.user.is_superuser %}
+                                                <div class="text-right">
+                                                    <a href="{% url 'edit_comp' comp.id %}">Edit</a> | 
+                                                    <a class="text-danger" href="{% url 'delete_comp' comp.id %}">Delete</a>
+                                                </div>
+                                            {% endif %}
 			</div>
+
 		</div>
 		<div class="mb-3 row">
 			<div class="col-md-12 details">

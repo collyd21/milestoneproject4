@@ -33,9 +33,9 @@ def add_comp(request):
     if request.method == 'POST':
         form = CompForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            comp = form.save()
             messages.success(request, 'Successfully added new competition!')
-            return redirect(reverse('add_comp'))
+            return redirect(reverse('comp_info', args=[comp.id]))
         else:
             messages.error(request, 'Failed to add competition. Please ensure the form is valid.')
     else:
@@ -71,3 +71,10 @@ def edit_comp(request, comp_id):
     }
 
     return render(request, template, context)
+
+def delete_comp(request, comp_id):
+    """ Delete a product from the store """
+    comp = get_object_or_404(Comp, pk=comp_id)
+    comp.delete()
+    messages.success(request, 'Competition successfully deleted!')
+    return redirect(reverse('comps'))
