@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
 from .models import Comp
 from .forms import CompForm
 
@@ -29,10 +30,44 @@ def comp_info(request, comp_id):
 
 def add_comp(request):
     """ Add a competition to the site """
-    form = CompForm()
+    if request.method == 'POST':
+        form = CompForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added new competition!')
+            return redirect(reverse('add_comp'))
+        else:
+            messages.error(request, 'Failed to add competition. Please ensure the form is valid.')
+    else:
+        form = CompForm()
+
     template = 'comps/add_comp.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+
+def edit_comp(request, comp_id):
+    """ Edit a competition """
+    comp = get_object_or_404(Comp, pk=comp_id)
+    if request.method == 'POST':
+        form = CompForm(request.POST, request.FILES, instance=comp)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated competition!')
+            return redirect(reverse('comp_info', args=[comp.id]))
+        else:
+            messages.error(request, 'Failed to update competition. Please ensure the form is valid.')
+    else:
+        form = CompForm(instance=comp)
+        messages.info(request, f'You are editing {comp.name}')
+
+    template = 'comps/edit_comp.html'
+    context = {
+        'form': form,
+        'comp': comp,
     }
 
     return render(request, template, context)
