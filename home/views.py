@@ -14,3 +14,9 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+
+def how_it_works(request):
+    """ A view to return the index page """
+
+    return render(request, 'home/how_it_works.html')
