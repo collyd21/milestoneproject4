@@ -5,34 +5,30 @@ from .forms import ReviewForm
 
 
 def all_reviews(request):
-    """ A view to show all site reviews """
-
+    """ A view to display all reviews """
     reviews = Review.objects.all()
-
     context = {
         'reviews': reviews,
     }
+    return render(request, 'reviews/reviews.html', context)
 
-    return render(request, 'reviews/add_review.html', context)
 
-
-def reviews(request):
-    """ A view to display reviews and a form for adding site reviews """
-    
+def add_review(request):
+    """ A view to display all reviews and form for adding new reviews """
     reviews = Review.objects.all()
-
     context = {
         'reviews': reviews,
     }
-
-    return render(request, 'reviews/add_review.html', context)
-
     if request.method == 'POST':
         add_review = ReviewForm(request.POST)
         if add_review.is_valid():
             add_review.save()
             messages.add_message(request, messages.INFO, 'Your review has been submitted.')
-            return redirect(reverse('home'))
+            reviews = Review.objects.all()
+            context = {
+                'reviews': reviews,
+                }
+            return render(request, 'reviews/reviews.html', context)
     else:
         add_review = ReviewForm()
-    return render(request, 'reviews/add_review.html', {'form': add_review})
+    return render(request, 'reviews/reviews.html', context)
