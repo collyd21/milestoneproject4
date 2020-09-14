@@ -39,22 +39,9 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
-    <div class="row">
-    <div class="col-md-6 mb-3">
-    <label for="id_login">Login:</label>
-    <input type="text" class="form-control"  name="login" placeholder="" autofocus="autofocus" required id="id_login">
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-6 mb-3">
-    <label for="id_password">Password:</label>
-    <input type="password" class="form-control" name="password" placeholder="" required id="id_password">
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-6 mb-3">
-    <label for="id_remember">Remember Me:</label>
-    <input type="checkbox" name="remember" id="id_remember">
+  <div class="row">
+  <div class="col-md-6 mb-3 allauth-form">
+  {{ form|crispy }}
     </div>
     </div>
   {% if redirect_field_value %}

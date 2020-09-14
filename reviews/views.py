@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Review
 from .forms import ReviewForm
 
@@ -12,7 +13,7 @@ def all_reviews(request):
     }
     return render(request, 'reviews/reviews.html', context)
 
-
+@login_required
 def add_review(request):
     """ A view to display all reviews and form for adding new reviews """
     reviews = Review.objects.all()
