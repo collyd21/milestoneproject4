@@ -5,7 +5,8 @@ body {
 
 /* NAVBAR */
 .navbar {
-background: #f1f0ee;
+background: rgb(190, 45, 45);
+
 }
 
 .spacer {
@@ -28,31 +29,60 @@ z-index: 99;
 }
 
 .navbar-nav a {
-    color :  black;
+    /* color :  black; */
+    color :  white;
 }
 
 .navbar-nav a:hover{
-  color: red;
+  color: black;
 }
 
 .navbar-nav i {
-    color : grey;
+    color : white;
 }
 
 .navbar-toggler {
-    border-color: red;
+    border-color: white;
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(225, 0, 0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(240, 240, 240)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.dropdown-menu a {
+    color: black;
 }
 
 /* JUMBOTRON */
+
+/* Medium devices (768px and lower) */
+  @media (max-width: 768px) {
+ .jumbotron {
+    background-image: url('/media/new-logo.png');
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 200px;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+.jumbotron-padding {
+    height: 10px;
+    background-color: black;
+    margin: 0px;
+}
+  }
+
+  @media (min-width: 769px) {
 .jumbotron {
  background-image: url('/media/new-bg.png');
- background-size: cover;
- height: 550px;
+ background-size: 100% 550px;
+ min-height: 550px;
 }
+  }
+
 
 /* COMPETITION CARDS */
 a:link {
@@ -76,11 +106,11 @@ a:link {
 }
 
 .card-body {
-    border: 1px solid rgb(240, 230, 230);
-    border-radius: 3px;
-    background-color:rgba(240, 240, 240, 0.904);
+    border: 1px solid black;
+    border-radius: 0px 0px 6px 6px;
+    background-color: black;
     height: 110px;
-    color: black;
+    color: white;
     padding: 5px;
 }
 
@@ -98,12 +128,6 @@ a:link {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-/* INDIVIDUAL COMPETITION */
-/* .card-img-comp {
-  width: 100%;
-  max-height: 50vw;
-} */
 
 .tab-content {
     background-color: rgba(240, 240, 240, 0.904);
@@ -128,7 +152,8 @@ a:link {
 
 /* CART */
 .bg-grey {
-    background-color: rgba(240, 240, 240, 0.904);
+    color: white;
+    background-color: black;
 }
 
 .total-colour {
@@ -194,15 +219,16 @@ a:link {
 
 /* MEDIA QUERIES FOR CARD SIZING */
 
-/* X-Small devices (landscape phones, 300px and up) */
+/* X-Small devices (300px and up) */
   @media (min-width: 300px) {
     .card-img-comp {
         width: 100%;
         max-height: 75vw;
     }
-  }
+}
 
-/* Small devices (landscape phones, 576px and up) */
+
+/* Small devices (576px and up) */
   @media (min-width: 576px) {
     .card-img-top {
         width: 100%;
@@ -213,7 +239,7 @@ a:link {
         max-height: 50vw;
     }
   }
-/* Medium devices (tablets, 768px and up) */
+/* Medium devices (768px and up) */
   @media (min-width: 768px) {
     .card-img-top {
         width: 100%;
@@ -224,7 +250,8 @@ a:link {
         max-height: 50vw;
     }
   }
-/* Large devices (desktops, 992px and up) */
+
+/* Large devices (992px and up) */
   @media (min-width: 992px) {
     .card-img-top {
         width: 100%;
@@ -233,38 +260,8 @@ a:link {
     .card-img-comp {
         width: 100%;
         max-height: 25vw;
-    }   
+    }  
   }
-
-/* X-Small devices (landscape phones, 300px and up) */
-  /* @media (min-width: 300px) {
-    .card-img-comp {
-        width: 100%;
-       max-height: 75vw;
-    }
-  } */
-
-/* Small devices (landscape phones, 576px and up) */
-  /* @media (min-width: 576px) {
-    .card-img-comp {
-        width: 100%;
-       max-height: 50vw;
-    }
-  } */
-/* Medium devices (tablets, 768px and up) */
-  /* @media (min-width: 768px) {
-    .card-img-comp {
-        width: 100%;
-        max-height: 50vw;
-    }
-  } */
-/* Large devices (desktops, 992px and up) */
-  /* @media (min-width: 992px) {
-    .card-img-comp {
-        width: 100%;
-        max-height: 25vw;
-    }
-  } */
 
 .allauth-form input::placeholder {
     opacity: 0;
