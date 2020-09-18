@@ -77,7 +77,7 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                    <a href="{% url 'add_comp' %}" class="dropdown-item">Add/Edit Comps</a>
+                                    <a href="{% url 'add_comp' %}" class="dropdown-item">Add Competition</a>
                                 {% endif %}
                                 <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
