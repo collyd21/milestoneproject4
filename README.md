@@ -1,45 +1,54 @@
 # Big Boss SNKRS
-Full Stack Frameworks with Django Milestone 4 Project.
+**Full Stack Frameworks with Django Milestone 4 Project.**
 
-Over the last 6-12 months I have noticed a massive increase in Competition sites. These competition sites are essentially lotteries where Users buy a ticket, is given a number and one person wins based on the use of a random number generator (namely Google). 
+Over the last 6-12 months I have noticed a massive increase in Competition sites. These competition sites are essentially lotteries/raffles where Users buy a ticket, and are given a number. One person wins based on the use of a random number generator (namely Google). 
 Big Boss SNKRS is a competition site offering multiple raffles, with the winning prize of a brand-new pair of highly-sought after sneakers.
 
 
 ### User Stories
-As a user I want to:
-Browse/Payment:
-•	View newest competitions
-•	Browse all available competitions easily
-•	View extra information about a particular competition
-•	Add competitions to my cart
-•	View my cart total at anytime
-•	View all items in my cart and total cost in detail
-•	Use a pain free checkout format
-•	Pay by credit/debit card
-•	View a guide on how the competitions work
-Registering/Login:
-•	Save my details for future checkouts
-•	Easily register with the site
-•	Easily login/logout of the site
-•	Recover my password if necessary
-User Profile:
-•	View my default user details
-•	Update these details if necessary
-•	View my previous orders/transactions with the site
-Contact:
-•	Use a simple form to contact the Administrators
-Reviews:
-•	View reviews from previous Users
-•	Add my own review to the site
+*As a user I want to:*
+
+**Browse/Payment:**
+
+ * View newest competitions.
+ * Browse all available competitions easily
+ * View extra information about a particular competition
+ * Add competitions to my cart
+ * View my cart total at anytime
+ * View all items in my cart and total cost in detail
+ * Use a pain free checkout format
+ * Pay by credit/debit card
+ * View a guide on how the competitions work
+
+**Registering/Login:**
+
+ *	Save my details for future checkouts
+ *	Easily register with the site
+ *	Easily login/logout of the site
+ *	Recover my password if necessary
+
+**User Profile:**
+
+ * View my default user details
+ * Update these details if necessary
+ * View my previous orders/transactions with the site
+
+**Contact:**
+
+ * Use a simple form to contact the Administrators
+
+**Reviews:**
+
+ * View reviews from previous Users
+ * Add my own review to the site
 
 
-
-As a Site Administrator I want to:
-•	View all competitions easily
-•	Have an edit competition function
-•	Have a delete competition function
-•	View all user reviews in Django Admin
-•	View all user contact messages in Django Admin
+*As a Site Administrator I want to:*
+ * View all competitions easily
+ * Have an edit competition function
+ * Have a delete competition function
+ * View all user reviews in Django Admin
+ * View all user contact messages in Django Admin
 
 ### Scope
 The scope for this Milestone project is to develop a site that offers competitions/raffles where the prize is a pair of sneakers in the winners chosen size. The idea is that a winning user will receive a valuable/ highly-sought after pair of sneakers for a fraction of the price. Visitors can view all competitions, and extra information about a particular competition. They can then easily add multiple entries to their cart.
@@ -52,28 +61,35 @@ I had previous begun this project as a html only site, as I had not yet learned 
 
 
 ### Skeleton
-[Navbar](static/wireframes/navbar.jpg)
 
-[Homepage](static/wireframes/home.jpg)
+**Navbar**
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/collyd21/milestoneproject4/blob/master/static/wireframes/navbar.JPG"><img src="https://github.com/collyd21/milestoneproject4/blob/master/static/wireframes/navbar.JPG" alt="Navbar" style="max-width:100%;"></a>
 
-[Competition Preview Cards](static/wireframes/comp_cards.jpg)
+**Homepage**
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/collyd21/milestoneproject4/blob/master/static/wireframes/home.JPG"><img src="https://github.com/collyd21/milestoneproject4/blob/master/static/wireframes/home.JPG" alt="Navbar" style="max-width:100%;"></a>
 
-[Competition Details page](static/wireframes/comp_info.jpg)
+**Competition Preview Cards**
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/collyd21/milestoneproject4/blob/master/static/wireframes/comp_cards.JPG"><img src="https://github.com/collyd21/milestoneproject4/blob/master/static/wireframes/comp_cards.JPG" alt="Navbar" style="max-width:100%;"></a>
 
-[How it Works page](static/wireframes/how_works.jpg)
+**Competition Details Page**
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/collyd21/milestoneproject4/blob/master/static/wireframes/comp_info.JPG"><img src="https://github.com/collyd21/milestoneproject4/blob/master/static/wireframes/comp_info.JPG" alt="Navbar" style="max-width:100%;"></a>
+
+**How it Works Page**
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/collyd21/milestoneproject4/blob/master/static/wireframes/how_works.JPG"><img src="https://github.com/collyd21/milestoneproject4/blob/master/static/wireframes/how_works.JPG" alt="Navbar" style="max-width:100%;"></a>
+
 
 ### Structure
 
 #### Navbar
 The navbar features a restyled logo of the site name on the left, this is shortened to “BB SNKRS”. Centred on the navbar are the links to “Competitions”, “Reviews”, “How it Works” and “Contact Us”. Finally on the right features the “Account” dropdown link to reveal “Register“ or “Login“ if not logged in yet. If User is logged in these options are “My Profile” or “Logout“. Additionally, if it is Admin that has logged in the dropdown will feature the “Add/Edit Comps” link. At the end there is a Cart icon with a Euro amount, showing the current total of the visitor’s cart.
 
-##### Home Logo
+#### Home Logo
 By clicking on the “BB SNKRS” logo the user will be directed back to the homepage from wherever they are on the site.
 
-##### Homepage  
+#### Homepage  
 Displayed here is the full site logo of “Big Boss SNKRS” on a back drop of sneakers, by use of jumbotron. Underneath the latest competitions are shown. These are sorted by newest date of addition and also limited to display only 3 competitions. There is a button here that links to view the all competitions page.
 
-##### Competitions Page  
+#### Competitions Page  
 Here the user gets the full view of all the competitions on offer. They are aligned and shown by bootstrap card component, the same as the homepage.
 
 #### Reviews Page
@@ -88,7 +104,7 @@ If a user has further question for us. They can contact us through the use of th
 #### Register / Sign In Pages
 A visitor to the site can use this link to sign up or sign in. They are asked to fill in a form on either page, which uses Django’s builtin Allauth feature. I have restyled the default allauth templates to make everything uniform throughout the site.
 
-##### Competitions Details Page  
+#### Competitions Details Page  
 By clicking any of the competitions this will direct the user to a page that display more information about the competition. A User is shown a larger image of the sneakers, the name, size range, max entries, price and also asked for an entry quantity. Underneath there is a tab for displaying a description about the sneakers, then a tab for general competition details. 
 
 #### Cart Page
@@ -186,13 +202,16 @@ For this project I used the following technologies:
 
 **Stock Inventory**: A progress bar under the max entries field to show how many tickets for each competition are left. Also would need to implement code to decrease current available tickets by quantity after each cart checkout.
 
-**Policies** legal policies such as Terms & Conditions, Cookies Policy and Privacy Policy to be added to a footer at the bottom.
+**Policies**: legal policies such as Terms & Conditions, Cookies Policy and Privacy Policy to be added to a footer at the bottom.
+
+**Add question to each competition**: Under Ireland/UK laws this type of site must have a question of skill to be answered before purchasing a ticket for a draw. This is so that it is not classed as luck and doesn't not fall under gambling laws. I would like to add a multiple choice question to each competition, which must be correct for the User to gain a ticket to the draw.
+
 
 
 ## Testing
 For testing I broke each page out on its own, and made sure each component of that page did what it was required to. The following are the tests that I conducted:
 
-###Navbar (from base.html)
+### Navbar (from base.html)
 
 - BB Logo tested to direct to homepage.
 - Test that logo is set to hidden for smaller screens and toggler icon shown instead.
@@ -206,7 +225,7 @@ For testing I broke each page out on its own, and made sure each component of th
 - Test empty cart brings you to “Cart empty” page.
 - Add items to cart and ensure total accumulates correctly.
 
-###Homepage (index.html)
+### Homepage (index.html)
 
 - Large image shown on jumbotron correctly on desktop as per media query in CSS.
 - Small logo image shown correctly on jumbotron for smaller devices, as per media query in CSS.
@@ -216,7 +235,7 @@ For testing I broke each page out on its own, and made sure each component of th
 - Box shadow and enlarged card when hovered.
 - Card link directs to correct Competition details page.
  
-###Competitions (comps.html, comps_info.html, add_comp.html, edit_comp.html)
+### Competitions (comps.html, comps_info.html, add_comp.html, edit_comp.html)
 
 - Competitions link displays all competitions page.
 - Competition cards have same attributes as homepage.
@@ -225,7 +244,7 @@ For testing I broke each page out on its own, and made sure each component of th
 - Quantity selector operating as it should.
 - Add to cart button adds correct quantity and cart icon updates total amount.
 - Description tab and details tabs display their information when clicked.
-If Admin is logged in, “Edit” & “Delete” options are available.
+- If Admin is logged in, “Edit” & “Delete” options are available.
 - Delete button correctly deletes competition. (checked Django admin to confirm).
 - Edit button directs to edit competitions form.
 - Form fields are populated with current competition information.
@@ -239,7 +258,7 @@ If Admin is logged in, “Edit” & “Delete” options are available.
 - Check max entries cannot be more than 4 digits and that an error is displayed under field. Error toast also displays.
 
 
-###Reviews (reviews.html)
+### Reviews (reviews.html)
 
 - Reviews link renders reviews page.
 - All reviews are displayed correctly with correct CSS styling.
@@ -251,14 +270,14 @@ If Admin is logged in, “Edit” & “Delete” options are available.
 - Check Django Admin to confirm review is stored.
 
 
-###How It Works (how_it_works.html)
+### How It Works (how_it_works.html)
 
-- Test that link directs to How it Works page
-- Page renders correctly with correct CSS
+- Test that link directs to How it Works page.
+- Page renders correctly with correct CSS.
 - “Go to Competitions” button redirect to Competitions page correctly.
 
 
-###Contact Us (contact.html)
+### Contact Us (contact.html)
 
 - Contact Us link renders contact page.
 - Form is displayed correctly with correct CSS styling.
@@ -270,7 +289,7 @@ If Admin is logged in, “Edit” & “Delete” options are available.
 - Check Django Admin to confirm contact message is stored.
 
 
-###Cart(cart.html)
+### Cart(cart.html)
 
 - Test empty cart brings you to “Cart empty” page.
 - With items in cart test cart table is displayed correctly.
@@ -282,7 +301,7 @@ If Admin is logged in, “Edit” & “Delete” options are available.
 - Test “Checkout” button directs to checkout page.
 
 
-###Checkout(checkout.html, checkout_success.html)
+### Checkout(checkout.html, checkout_success.html)
 
 - Test checkout page displays correctly with correct CSS.
 - Check User’s information is pre-populated from profile (if User has filled in previously).
@@ -299,7 +318,8 @@ If Admin is logged in, “Edit” & “Delete” options are available.
 - Test “Return to Competitions” button directs to Competitions page.
 
 
-###Allauth pages
+### Allauth pages
+
 - Test “Register”, “Login” & “Forgot Password”  pages display correctly. Check that these pages inherit typical CSS styling of the rest of the site.
 - Check all fields are required on “Register” page.
 - Check email addresses must match email repeat field.
@@ -312,16 +332,16 @@ Test email not in use already is valid.
 - Check invalid details shows error on “Login” page.
 - Test “Login” button redirects to homepage and logs User in. Check successful toast displays.
 
-##Bugs/Issues
+## Bugs/Issues
 
 During the course of this project I became stuck on certain items, here are a few of the issues I faced and how I resolved them.
 
-** Removing item from cart**
+**Removing item from cart**
 The page would refresh but item would not be deleted. I was not replacing the cart after popping the item out of it. Code below was missing
 
 request.session['cart'] = cart
 
-** Card Images**
+**Card Images**
 The competition images in the Bootstrap card were not all the same heights. I used media queries in the CSS to allocate the height to each.
 
 **Logo on Navbar**
@@ -341,6 +361,7 @@ A live demo can be found here [Big Boss SNKRS]( https://colmdoyle-milestone4.her
 The website is hosted using Heroku. It is linked from the master branch of my milestone repository [Colm Doyle Milestone 4 GitHub]( https://github.com/collyd21/milestoneproject4). When new commits are added to the repository, Heroku will rebuild and the site will update with any changes.
 
 **Cloning via Github**:
+
 *	Open the Github Repository link.
 *	Click on the 'Clone or Download' button.
 *	Copy the URL provided.
@@ -403,4 +424,3 @@ The Comment Tutorial that I made into my site reviews section from [DjangoCentra
 The checkout template from GetBootstrap which I made my own and suit this project [GetBootstrap]( https://getbootstrap.com/docs/4.5/examples/checkout/)
 
 W3schools for some very helpful tips.
-
