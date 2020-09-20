@@ -1,45 +1,34 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-
 <!-- Jumbotron -->
 <div class="jumbotron-padding"></div>
-    <div class="jumbotron jumbotron-fluid">
-    </div>
+<div class="jumbotron jumbotron-fluid">
+</div>
 <div class="jumbotron-padding"></div>
-
-    <!-- <div class="jumbotron-large jumbotron-fluid d-md-block d-xl-none">
-    </div> -->
-
 <!-- Title -->
-    <h1 class= "text-center title"><strong>Latest Competitions</strong></h1>
-        <h4 class= "text-center text-all-comp">Check out the latest items up for grabs</h4 >
-
-    <div class="container">
-
-<!-- Link for all Competitions -->
-    <div class="text-right">
-        <a class="btn btn-dark rounded-pill py-2 mb-2" href="{% url 'comps' %}">All Competitions</a>
-    </div>
-
-<!-- Competitions Cards -->
-        <div class="text-center row mb-5 mt-2">
-        {% for comp in comps|slice:":3" %}
-			<div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="card mb-4">
-                    <a href="{% url 'comp_info' comp.id %}">
-                        <img src="{{ comp.image.url }}" class="card-img-top" alt="{{ comp.name }}">
-                    
-					    <div class="card-body">
-					        <h5 class="card-title">{{ comp.name }}</h5>
-					        <p class="card-text"> Entry € {{ comp.price }}</p> 
-					    </div>
-                        </a>
-				</div>
-        </div>
-        {% endfor %}
-    </div>
-    </div>
-
-{% endblock %} 
+<h1 class= "text-center"><strong>Latest Competitions</strong></h1>
+<h4 class= "text-center subtitle">Check out the latest items up for grabs</h4 >
+<div class="container">
+   <!-- Link for all Competitions -->
+   <div class="text-right">
+      <a class="btn btn-dark rounded-pill py-2 mb-2" href="{% url 'comps' %}">All Competitions</a>
+   </div>
+   <!-- Competitions Cards -->
+   <div class="text-center row mb-5 mt-2">
+      {% for comp in comps|slice:":3" %}
+      <div class="col-lg-4 col-md-4 col-sm-6">
+         <div class="card mb-4">
+            <a href="{% url 'comp_info' comp.id %}">
+               <img src="{{ comp.image.url }}" class="card-img-top" alt="{{ comp.name }}">
+               <div class="card-body">
+                  <h5 class="card-title">{{ comp.name }}</h5>
+                  <p class="card-text"> Entry € {{ comp.price }}</p>
+               </div>
+            </a>
+         </div>
+      </div>
+      {% endfor %}
+   </div>
+</div>
+{% endblock %}

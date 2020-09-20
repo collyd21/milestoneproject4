@@ -1,44 +1,36 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-
 <!-- Title -->
-<h1 class="text-center title-all-comp">How It Works</h1>
-
-
+<h1 class="text-center title">How It Works</h1>
+<!-- How it works cards -->
 <div class="container mt-5">
-<div class="row d-flex justify-content-center">
-<div class="col-md-3 worksContainer">
-<div class="tile-number mx-auto">1</div>
-<h4 class="tile-h4">Browse</h4>
-<p class="tile-p">Browse the sneaker competitions until you find something that you like the look of. 
-All competitions have different entry limits</p>
+   <div class="row d-flex justify-content-center">
+      <div class="col-md-3 worksContainer">
+         <div class="tile-number mx-auto">1</div>
+         <h4 class="tile-h4">Browse</h4>
+         <p class="tile-p">Browse the sneaker competitions until you find something that you like the look of. 
+            All competitions have different entry limits
+         </p>
+      </div>
+      <div class="col-md-3 worksContainer">
+         <div class="tile-number mx-auto">2</div>
+         <h4 class="tile-h4">Enter Draw</h4>
+         <p class="tile-p">Click on competition image, this will bring you to the information page.
+            Click "add to cart" and proceed to pay
+         </p>
+      </div>
+      <div class="col-md-3 worksContainer">
+         <div class="tile-number mx-auto">3</div>
+         <h4 class="tile-h4">Watch</h4>
+         <p class="tile-p">Wait to be notified about the time and date the draw will be done.
+            You will be able to watch the draw on Livestream via Facebook or Twitter
+         </p>
+      </div>
+   </div>
 </div>
-
-
-
-<div class="col-md-3 worksContainer">
-<div class="tile-number mx-auto">2</div>
-<h4 class="tile-h4">Enter Draw</h4>
-<p class="tile-p">Click on competition image, this will bring you to the information page.
-Click "add to cart" and proceed to pay</p>
-</div>
-
-
-
-<div class="col-md-3 worksContainer">
-<div class="tile-number mx-auto">3</div>
-<h4 class="tile-h4">Watch</h4>
-<p class="tile-p">Wait to be notified about the time and date the draw will be done.
-You will be able to watch the draw on Livestream via Facebook or Twitter</p>
-</div>
-</div>
-</div>
-
 <div class="text-center">
-        <a class="btn btn-dark rounded-pill py-2 mb-2" href="{% url 'comps' %}">Go To
-         Competitions</a>
-    </div>
-
-{% endblock %} 
+   <a class="btn btn-dark rounded-pill py-2 mb-2" href="{% url 'comps' %}">Go To
+   Competitions</a>
+</div>
+{% endblock %}

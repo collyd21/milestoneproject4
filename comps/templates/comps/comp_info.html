@@ -1,77 +1,83 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-
 <!-- Title -->
-<h1 class="text-center title-all-comp">Competition details</h1>
-<!-- <h3 class= "text-center text-all-comp">Competition details are below</h3> -->
-
+<h1 class="text-center title">Competition details</h1>
 <!-- Competitions Cards -->
-
 <div class="container mx-auto compContainer">
-	<div class="mt-5 row d-flex justify-content-center">
-		<div class="col-md-6">
-			<img src="{{ comp.image.url }}" class="card-img-comp" alt="{{ comp.name }}" />
+   <div class="mt-5 row d-flex justify-content-center">
+      <div class="col-md-6">
+         <img src="{{ comp.image.url }}" class="card-img-comp" alt="{{ comp.name }}" />
+      </div>
+      <div class="col-md-6">
+         <h1 class="comp-title"><strong>{{ comp.name }}</strong></h1>
+         <h5><strong>Sizes Available:</strong> {{ comp.size_range }}</h5>
+         <h5><strong>Max Entries:</strong> {{ comp.entries }}</h5>
+         <h5><strong>Entry:</strong> € {{ comp.price }}</h5>
+         <form method="POST" action="{% url 'add_to_cart' comp.id %}" accept-charset="UTF-8">
+            {% csrf_token %}
+            <div class="form-group w-50">
+               <label for="quantity" class="form-label form-label-required"><strong>Quantity:</strong></label>
+               <select class="form-control custom-select " id="id_qty_{{ comp.id }}" name="quantity" required="required" type="number" data-item_id="{{ comp.id }}">
+                  <option selected="selected" value="">Choose a quantity</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+               </select>
+            </div>
+            <div class="button-group">
+               <input class="btn btn-dark rounded-pill py-2 mb-2" type="submit" value="Add to cart">
+            </div>
+            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+         </form>
+         <!-- Competition edit options for Admin -->
+         {% if request.user.is_superuser %}
+         <div class="text-right">
+            <a href="{% url 'edit_comp' comp.id %}">Edit</a> | 
+            <a class="text-danger" href="{% url 'delete_comp' comp.id %}">Delete</a>
+         </div>
+         {% endif %}
+      </div>
+      <!-- Competition description/details -->
+   </div>
+   <div class="mb-3 mt-3 row">
+      <div class="col-md-12 details">
+         <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+               <a class="nav-item nav-link active" id="nav-description-tab" data-toggle="tab"
+                  href="#nav-description" role="tab" aria-controls="nav-description"
+                  aria-selected="true">Description</a>
+               <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details"
+                  role="tab" aria-controls="nav-details" aria-selected="false">Details</a>
+            </div>
+         </nav>
+         <div class="px-3 py-3 tab-content" id="nav-tabContent">
+            <div class="tab-pane show active white-space-pre-line" id="nav-description" role="tabpanel"
+               aria-labelledby="nav-description-tab">
+               <div class="text-container">
+                  <p class="my-0">{{ comp.description }}</p>
+               </div>
+            </div>
+            <div class="tab-pane" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+               <div class="text-container">
+                  <p>By entering this competition, you have confirmed that you have read and agree to our
+                     <a target="_blank" href="#" class="link">terms and conditions</a>.
+                  </p>
+                  <p>For free entry queries please contact us</p>
+                  <p class="mb-0">The maximum number of entries for this competition is
+                     <span class="font-weight-bold">{{ comp.entries }}</span>.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
-			<div class="col-md-6">
-				<h1 class="comp-title"><strong>{{ comp.name }}</strong></h1>
-				<h5><strong>Sizes Available:</strong> {{ comp.size_range }}</h5>
-				<h5><strong>Max Entries:</strong> {{ comp.entries }}</h5>
-				<h5><strong>Entry:</strong> € {{ comp.price }}</h5>
-				<form method="POST" action="{% url 'add_to_cart' comp.id %}" accept-charset="UTF-8">
-{% csrf_token %}
-					<div class="form-group w-50">
-						<label for="quantity" class="form-label form-label-required"><strong>Quantity:</strong></label>
-						<select class="form-control custom-select " id="id_qty_{{ comp.id }}" name="quantity" required="required" type="number" data-item_id="{{ comp.id }}">
-<option selected="selected" value="">Choose a quantity</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
-					</div>
-					<div class="button-group">
-						<input class="btn btn-dark rounded-pill py-2 mb-2" type="submit" value="Add to cart">
-                        
-</div>
-<input type="hidden" name="redirect_url" value="{{ request.path }}">
-				</form>
-                {% if request.user.is_superuser %}
-                                                <div class="text-right">
-                                                    <a href="{% url 'edit_comp' comp.id %}">Edit</a> | 
-                                                    <a class="text-danger" href="{% url 'delete_comp' comp.id %}">Delete</a>
-                                                </div>
-                                            {% endif %}
-			</div>
-
-		</div>
-		<div class="mb-3 mt-3 row">
-			<div class="col-md-12 details">
-				<nav>
-					<div class="nav nav-tabs" id="nav-tab" role="tablist">
-						<a class="nav-item nav-link active" id="nav-description-tab" data-toggle="tab"
-							href="#nav-description" role="tab" aria-controls="nav-description"
-							aria-selected="true">Description</a>
-						<a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details"
-							role="tab" aria-controls="nav-details" aria-selected="false">Details</a>
-					</div>
-				</nav>
-				<div class="px-3 py-3 tab-content" id="nav-tabContent">
-					<div class="tab-pane show active white-space-pre-line" id="nav-description" role="tabpanel"
-						aria-labelledby="nav-description-tab">
-						<div class="text-container">
-							<p class="my-0">{{ comp.description }}</p>
-						</div>
-					</div>
-					<div class="tab-pane" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
-						<div class="text-container">
-							<p>By entering this competition, you have confirmed that you have read and agree to our
-                            <a target="_blank" href="#" class="link">terms and conditions</a>.</p>
-							<p>For free entry queries please contact us</p>
-							<p class="mb-0">The maximum number of entries for this competition is
-								<span class="font-weight-bold">{{ comp.entries }}</span>.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	{% endblock %}
+{% endblock %}

@@ -1,65 +1,63 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-
 <!-- Title -->
-<h1 class="text-center title-all-comp">Reviews</h1>
-
+<h1 class="text-center title">Reviews</h1>
+<!-- Reviews Display -->
 <div class="container mt-5">
-
-	<div class="row">
-		<div class="col-md-12">
-			<div class="bg-grey rounded p-3 px-3 mb-3 text-uppercase"><strong>Site Reviews</strong>
-			</div>
-		</div>
-	</div>
-	{% for review in reviews %}
-	<ul class="list-group mb-4">
-		<li class="list-group-item">
-			<div class="row">
-				<div class="col-6 mb-1 text-capitalize">
-					<h6 class=""><strong>Reviewer:</strong> {{ review.name }}</h6>
-				</div>
-				<div class="col-6">
-					<h6 class="text-right"><strong>Review Date:</strong> {{ review.created_on }}</h6>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12">
-					<p class="lh-condensed text-muted"></p>{{ review.body }}
-				</div>
-			</div>
-		</li>
-	</ul>
-	{% endfor %}
-
-	{% if user.is_authenticated %}
-	<div class="row mt-5">
-		<div class="col-md-6">
-			<div class="bg-grey rounded p-3 px-3 mb-3 text-uppercase"><strong>Add A Review</strong>
-			</div>
-		</div>
-	</div>
-	<form action="{% url 'add_review' %}" method="POST">
-		{% csrf_token %}
-		<div class="row">
-			<div class="col-md-6 mb-3"><label for="id_name">Name:</label>
-				<input type="text" class="form-control" name="name" maxlength="80" required id="id_name">
+   <div class="row">
+      <div class="col-md-12">
+         <div class="bg-black rounded p-3 px-3 mb-3 text-uppercase"><strong>Site Reviews</strong>
+         </div>
+      </div>
+   </div>
+   {% for review in reviews %}
+   <ul class="list-group mb-4">
+      <li class="list-group-item">
+         <div class="row">
+            <div class="col-6 mb-1 text-capitalize">
+               <h6 class=""><strong>Reviewer:</strong> {{ review.name }}</h6>
             </div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 mb-3"><label for="id_email">Email:</label>
-					<input type="email"  class="form-control" name="email" maxlength="254" required id="id_email">
+            <div class="col-6">
+               <h6 class="text-right"><strong>Review Date:</strong> {{ review.created_on }}</h6>
             </div>
-				</div>
-				<div class="row">
-					<div class="col-md-6 mb-3"><label for="id_body">Review:</label>
-						<textarea name="body"  class="form-control" cols="40" rows="10" required id="id_body"></textarea>
-					</div>
-				</div>
-				<button class="btn btn-dark rounded-pill py-2 mb-4" type="submit">Add Review</button>
-	</form>
+         </div>
+         <div class="row">
+            <div class="col-12">
+               <p class="lh-condensed text-muted"></p>
+               {{ review.body }}
+            </div>
+         </div>
+      </li>
+   </ul>
+   {% endfor %}
+<!-- Adding Review -->
+   {% if user.is_authenticated %}
+   <div class="row mt-5">
+      <div class="col-md-6">
+         <div class="bg-black rounded p-3 px-3 mb-3 text-uppercase"><strong>Add A Review</strong>
+         </div>
+      </div>
+   </div>
+   <form action="{% url 'add_review' %}" method="POST">
+      {% csrf_token %}
+      <div class="row">
+         <div class="col-md-6 mb-3"><label for="id_name">Name:</label>
+            <input type="text" class="form-control" name="name" maxlength="80" required id="id_name">
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6 mb-3"><label for="id_email">Email:</label>
+            <input type="email"  class="form-control" name="email" maxlength="254" required id="id_email">
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6 mb-3"><label for="id_body">Review:</label>
+            <textarea name="body"  class="form-control" cols="40" rows="10" required id="id_body"></textarea>
+         </div>
+      </div>
+      <button class="btn btn-dark rounded-pill py-2 mb-4" type="submit">Add Review</button>
+   </form>
 </div>
 {% endif %}
 {% endblock %}
