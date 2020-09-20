@@ -13,8 +13,11 @@ from profiles.forms import UserProfileForm
 
 import stripe
 
+
 @login_required
 def checkout(request):
+    """ A view that renders the checkout form and validates """
+
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -106,11 +109,10 @@ def checkout(request):
 
     return render(request, template, context)
 
+
 @login_required
 def checkout_success(request, order_number):
-    """
-    Handle successful checkouts
-    """
+    """ Handles successful checkouts """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 

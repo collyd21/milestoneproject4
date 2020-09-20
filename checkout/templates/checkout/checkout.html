@@ -8,70 +8,71 @@
 <!-- Title -->
 <h1 class="text-center title">Get Ready to Cop</h1>
 <div class="container mt-5">
-<!-- Cart summary on right side -->
-<div class="row">
-   <div class="col-md-4 order-md-2 mb-4">
-      <div class="bg-black rounded p-3 px-3 mb-3 text-uppercase"><strong>Your cart</strong></div>
-      {% for item in cart_items %}
-      <ul class="list-group mb-3">
-         <li class="list-group-item">
-            <h6 class="">{{ item.comp.name }}</h6>
+   <!-- Cart summary on right side -->
+   <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+         <div class="bg-black rounded p-3 px-3 mb-3 text-uppercase"><strong>Your cart</strong></div>
+         {% for item in cart_items %}
+         <ul class="list-group mb-3">
+            <li class="list-group-item">
+               <h6 class="">{{ item.comp.name }}</h6>
+               <div class="row">
+                  <div class="col text-left">
+                     <p class="lh-condensed text-muted">Quantity: {{ item.quantity }}</p>
+                  </div>
+                  <div class="col text-right">
+                     <p class=" lh-condensed text-muted">Ea. €{{ item.comp.price }}</p>
+                  </div>
+               </div>
+            </li>
+            {% endfor %}
+            <li class="list-group-item d-flex justify-content-between">
+               <span>Total</span>
+               <strong class="total-colour">€ {{ total|floatformat:2 }}</strong>
+            </li>
+         </ul>
+         <!-- Personal details form -->
+      </div>
+      <div class="col-md-8 order-md-1">
+         <div class="bg-black rounded p-3 px-3 mb-3 text-uppercase"><strong>Billing Address</strong></div>
+         <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+            {% csrf_token %}
+            {{ order_form.full_name | as_crispy_field }}
+            {{ order_form.email | as_crispy_field }}
+            {{ order_form.phone_number | as_crispy_field }}
+            {{ order_form.address | as_crispy_field }}
+            {{ order_form.address2 | as_crispy_field }}
+            {{ order_form.town_city | as_crispy_field }}
+            {{ order_form.county | as_crispy_field }}
+            {{ order_form.postcode | as_crispy_field }}
+            {{ order_form.country | as_crispy_field }}
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+               <input type="checkbox" class="custom-control-input" name="save-info" id="save-info" checked>
+               {% if user.is_authenticated %}
+               <label class="custom-control-label" for="save-info">Save this information for next time</label>
+               {% else %}
+               <label class="form-check-label" for="id-save-info">
+               <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+               <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+               </label>
+               {% endif %}
+            </div>
+            <hr class="mb-4">
+            <!-- Stipre card details -->
+            <div class="bg-black rounded p-3 px-3 mb-3 text-uppercase">Payment</div>
+            <label for="cc-name">Card Details</label>
             <div class="row">
-               <div class="col text-left">
-                  <p class="lh-condensed text-muted">Quantity: {{ item.quantity }}</p>
-               </div>
-               <div class="col text-right">
-                  <p class=" lh-condensed text-muted">Ea. €{{ item.comp.price }}</p>
+               <div class="col-md-12 mb-0">
+                  <div class="mb-3" id="card-element">Card</div>
+                  <!-- Stripe form errors -->
+                  <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                </div>
             </div>
-         </li>
-         {% endfor %}
-         <li class="list-group-item d-flex justify-content-between">
-            <span>Total</span>
-            <strong class="total-colour">€ {{ total|floatformat:2 }}</strong>
-         </li>
-      </ul>
-      <!-- Personal details form -->
-   </div>
-   <div class="col-md-8 order-md-1">
-      <div class="bg-black rounded p-3 px-3 mb-3 text-uppercase"><strong>Billing Address</strong></div>
-      <form action="{% url 'checkout' %}" method="POST" id="payment-form">
-         {% csrf_token %}
-         {{ order_form.full_name | as_crispy_field }}
-         {{ order_form.email | as_crispy_field }}
-         {{ order_form.phone_number | as_crispy_field }}
-         {{ order_form.address | as_crispy_field }}
-         {{ order_form.address2 | as_crispy_field }}
-         {{ order_form.town_city | as_crispy_field }}
-         {{ order_form.county | as_crispy_field }}
-         {{ order_form.postcode | as_crispy_field }}
-         {{ order_form.country | as_crispy_field }}
-         <hr class="mb-4">
-         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="save-info" id="save-info" checked>
-            {% if user.is_authenticated %}
-            <label class="custom-control-label" for="save-info">Save this information for next time</label>
-            {% else %}
-            <label class="form-check-label" for="id-save-info">
-            <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
-            <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
-            </label>
-            {% endif %}
-         </div>
-         <hr class="mb-4">
-         <!-- Stipre card details -->
-         <div class="bg-black rounded p-3 px-3 mb-3 text-uppercase">Payment</div>
-         <label for="cc-name">Card Details</label>
-         <div class="row">
-            <div class="col-md-12 mb-0">
-               <div class="mb-3" id="card-element">Card</div>
-               <!-- Stripe form errors -->
-               <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-            </div>
-         </div>
-         <hr class="mb-4">
-         <button class="btn btn-dark rounded-pill py-2 mb-2 btn-block mb-3" type="submit">Pay Now</button>
-      </form>
+            <hr class="mb-4">
+            <button class="btn btn-dark rounded-pill py-2 mb-2 btn-block mb-3" type="submit">Pay Now</button>
+         </form>
+      </div>
    </div>
 </div>
 {% endblock %}

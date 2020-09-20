@@ -86,7 +86,7 @@ def edit_comp(request, comp_id):
 
 @login_required
 def delete_comp(request, comp_id):
-    """ Delete a product from the store """
+    """ Delete a individual competition """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin can do that.')
         return redirect(reverse('home'))

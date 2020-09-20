@@ -14,7 +14,7 @@ class CompAdmin(admin.ModelAdmin):
         'image',
     )
 
-    ordering = ('image',)
+    ordering = ('-date',)
 
 
 admin.site.register(Comp, CompAdmin)

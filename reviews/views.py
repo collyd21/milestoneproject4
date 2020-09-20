@@ -16,6 +16,6 @@ def add_review(request):
     else:
         reviews = Review.objects.all()
         context = {
-        'reviews': reviews,
-    }
+            'reviews': reviews,
+        }
     return render(request, 'reviews/reviews.html', context)

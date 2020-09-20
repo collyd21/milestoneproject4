@@ -332,6 +332,8 @@ Test email not in use already is valid.
 - Check invalid details shows error on “Login” page.
 - Test “Login” button redirects to homepage and logs User in. Check successful toast displays.
 
+**All urls were check by typing them in and cofirming that a Vistor/User/Admin can only access the pages they are authorised to**
+
 ## Bugs/Issues
 
 During the course of this project I became stuck on certain items, here are a few of the issues I faced and how I resolved them.
