@@ -195,6 +195,8 @@ For this project I used the following technologies:
 
 [Responsinator](http://www.responsinator.com/) - for testing site Responsiveness.
 
+[PEP8 Online](http://pep8online.com/) - To format all Python code.
+
 
 ## Future Features
 

@@ -13,4 +13,4 @@ class Contact(models.Model):
         verbose_name_plural = "Contact"
 
     def __str__(self):
-        return self.name + "-" +  self.email
+        return self.name + "-" + self.email
