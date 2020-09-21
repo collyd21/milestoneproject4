@@ -29,11 +29,11 @@
 <ul class="list-group mb-4">
    <li class="list-group-item">
       <div class="row">
-         <div class="col-6 mb-1">
+         <div class="col-md-6 col-sm-12 mb-1">
             <h6 class=""><strong>Order Number:</strong> {{ order.order_number }}</h6>
          </div>
-         <div class="col-6">
-            <h6 class="text-right"><strong>Order Date:</strong> {{ order.date }}</h6>
+         <div class="col-md-6 col-sm-12 mb-1">
+            <h6 class="order-date-align"><strong>Order Date:</strong> {{ order.date }}</h6>
          </div>
       </div>
       {% for item in order.lineitems.all %}

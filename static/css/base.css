@@ -267,6 +267,9 @@ a:link {
 		width: 100%;
 		max-height: 50vw;
 	}
+    .order-date-align {
+        text-align: right;
+    }
 }
 
 
