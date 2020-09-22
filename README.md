@@ -81,7 +81,7 @@ I had previous begun this project as a html only site, as I had not yet learned 
 ### Structure
 
 #### Navbar
-The navbar features a restyled logo of the site name on the left, this is shortened to “BB SNKRS”. Centred on the navbar are the links to “Competitions”, “Reviews”, “How it Works” and “Contact Us”. Finally on the right features the “Account” dropdown link to reveal “Register“ or “Login“ if not logged in yet. If User is logged in these options are “My Profile” or “Logout“. Additionally, if it is Admin that has logged in the dropdown will feature the “Add/Edit Comps” link. At the end there is a Cart icon with a Euro amount, showing the current total of the visitor’s cart.
+The navbar features a restyled logo of the site name on the left, this is shortened to “BB SNKRS”. Centred on the navbar are the links to “Competitions”, “Reviews”, “How it Works” and “Contact Us”. Finally on the right features the “Account” dropdown link to reveal “Register“ or “Login“ if not logged in yet. If User is logged in these options are “My Profile” or “Logout“. Additionally, if it is Admin that has logged in the dropdown will feature the “Add Competition” link. At the end there is a Cart icon with a Euro amount, showing the current total of the visitor’s cart.
 
 #### Home Logo
 By clicking on the “BB SNKRS” logo the user will be directed back to the homepage from wherever they are on the site.
@@ -133,7 +133,7 @@ If the user is a site Admin, they have the option under account of adding new co
 
 #### Edit Competition page
 
-As an Admin, the user has extra options on the competitions details page,-. They can edit or delete that particular competition. If they choose edit, this will open a similar page to the add competitions page but all form details will be pre-filled. They then make their alterations and update the competition. 
+As an Admin, the user has extra options on the competitions details page. They can edit or delete that particular competition. If they choose edit, this will open a similar page to the add competitions page but all form details will be pre-filled. They then make their alterations and update the competition. 
 
 
 ### Surface
@@ -334,6 +334,12 @@ Test email not in use already is valid.
 - Check invalid details shows error on “Login” page.
 - Test “Login” button redirects to homepage and logs User in. Check successful toast displays.
 
+### Footer
+
+- Test foot renders correctly and is responsive (links stack underneath copyright text on mobile).
+- Test link to Facebook page.
+- Test link to Instagram page.
+
 **All urls were check by typing them in and cofirming that a Vistor/User/Admin can only access the pages they are authorised to**
 
 ## Bugs/Issues
@@ -356,6 +362,9 @@ When clicking into the message text box on Reviews form, the cursor would start 
 
 **Competition Cards**
 Whole card was not clickable as a link to bring the User onto the competitions page. I wrapped the whole card in <a> tags.
+
+**Order Number Length**
+As the order number is fairly lengthy. When viewed on smaller devices it overflowed onto the order date section. I used media queries again to align the order date underneath the order number so it views much better.
 
   
 

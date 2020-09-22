@@ -229,7 +229,7 @@ a:link {
 }
 
 
-/* MEDIA QUERIES FOR CARD SIZING */
+/* MEDIA QUERIES FOR RESPONSIVE SIZING */
 
 
 /* X-Small devices (300px and up) */
@@ -286,6 +286,22 @@ a:link {
 	}
 }
 
+
+/* Allauth */
+
 .allauth-form input::placeholder {
 	opacity: 0;
+}
+
+
+/* Footer */
+
+.footer {
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+.social-links li a i {
+    color: white;
 }
