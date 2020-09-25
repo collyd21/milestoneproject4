@@ -300,6 +300,8 @@ a:link {
     text-align: center;
     background-color: black;
     color: white;
+    position: absolute;
+    width: 100vw;
 }
 
 .social-links li a i {
