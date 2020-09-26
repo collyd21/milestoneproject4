@@ -267,9 +267,9 @@ a:link {
 		width: 100%;
 		max-height: 50vw;
 	}
-    .order-date-align {
-        text-align: right;
-    }
+	.order-date-align {
+		text-align: right;
+	}
 }
 
 
@@ -297,13 +297,16 @@ a:link {
 /* Footer */
 
 .footer {
-    text-align: center;
-    background-color: black;
-    color: white;
-    position: absolute;
-    width: 100vw;
+	text-align: center;
+	background-color: black;
+	color: white;
+}
+
+.footer-item {
+	margin: 0px;
+	padding: 0px;
 }
 
 .social-links li a i {
-    color: white;
+	color: white;
 }
