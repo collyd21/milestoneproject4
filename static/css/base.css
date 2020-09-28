@@ -300,6 +300,7 @@ a:link {
 	text-align: center;
 	background-color: black;
 	color: white;
+    position: bottom;
 }
 
 .footer-item {
