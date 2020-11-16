@@ -311,3 +311,90 @@ a:link {
 .social-links li a i {
 	color: white;
 }
+
+#ncx-expiry_month, #ncx-expiry_year {
+    background-image: url(https://static.thenounproject.com/png/404-200.png) !important;
+}
+
+#ncx-card_number {
+    background-image: url(https://cdn0.iconfinder.com/data/icons/major-credit-cards-colored/48/JD-11-512.png) !important;
+    background-position: 0 !important;
+}
+
+#ncx-cvv {
+    background-image: url(https://icons-for-free.com/iconfiles/png/512/card+credit+card+debit+card+master+card+icon-1320184902079563557.png) !important;
+    background-position: 0 !important;
+}
+
+#ncx-fullname {
+    background-image: url(https://thumbs.dreamstime.com/b/person-icon-flat-style-man-symbol-person-icon-flat-style-man-symbol-isolated-white-background-simple-people-abstract-icon-118611127.jpg) !important;
+    background-position: 0 !important;
+}
+
+#ncx-email {
+    background-image: url(https://image.flaticon.com/icons/png/512/8/8807.png) !important;
+    background-size: 20px auto !important;
+    background-position: 6px 7px !important;
+}
+
+#ncx-phone {
+    background-image: url(https://image.flaticon.com/icons/png/512/25/25377.png) !important;
+    background-size: 20px auto !important;
+    background-position: 6px 7px !important;
+}
+
+#ncx-address {
+    background-image: url(https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-512.png) !important;
+    background-size: 20px auto !important;
+    background-position: 6px 7px !important;
+}
+
+#ncx-city {
+    background-image: url(https://webstockreview.net/images/location-icon-png-7.png) !important;
+    background-size: 24px auto !important;
+    background-position: 4px 7px !important;
+}
+
+#ncx-postcode {
+    background-image: url(https://cdn.iconscout.com/icon/premium/png-512-thumb/postcode-557755.png) !important;
+    background-size: 18px auto !important;
+    background-position: 4px 7px !important;
+}
+
+#ncx-states {
+    background-image: url(https://cdn3.iconfinder.com/data/icons/usa-states-map-j-glyps/64/usa_map_state-35_newyork-512.png) !important;
+    background-size: 25px auto !important;
+    background-position: 5px 10px !important;
+}
+
+#ncx-country {
+    background-image: url(https://cdn0.iconfinder.com/data/icons/octicons/1024/globe-512.png) !important;
+    background-size: 20px auto !important;
+    background-position: 6px 7px !important;
+}
+
+#ncx-description-box {
+    color: white !important;
+    background-color: #343a40 !important;
+}
+
+#ncx-exit-btn {
+    background-image: url(https://icons-for-free.com/iconfiles/png/512/close+icon-1320184117228553763.png) !important;
+    background-size: 20px auto !important;
+    background-position: 6px 7px !important;
+}
+
+.ncx-accordion-toggle.ncx-active {
+    background: none !important;
+    color: #343a40 !important;
+}
+
+.ncx-btn-primary {
+    background-color: #be2d2e !important;
+}
+
+.ncx-btn-primary:hover {
+    background-color: #8d0505 !important;
+    border-color: #343a40 !important;
+}
+

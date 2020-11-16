@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_css %}
+<script src="https://secure.nochex.com/exp/jquery.js" ></script>
+          <script src="https://secure.nochex.com/exp/nochex_lib.js" ></script>
+{% endblock %}
 {% block content %}
 <!-- Title -->
 <h1 class="text-center title">In Your Shoebox</h1>
@@ -70,6 +74,33 @@
                <div class="col-lg-6 col-xs-12">
                   <a href="{% url 'checkout' %}" class="btn btn-dark rounded-pill py-2 mb-2 btn-block">Proceed to checkout</a>
                </div>
+               <div class="col-lg-6 col-xs-12">
+                  <a href="{% url 'checkout_nochex' %}" id="checkout_nochex" class="btn btn-dark rounded-pill py-2 mb-2 btn-block">Nochex checkout</a>
+               </div>
+               <button id="ncx-show-checkout" title="Checkout" class="btn btn-dark rounded-pill py-2 mb-2 btn-block"> Nochex Modal </button>
+        <form id="nochexForm" class="ncx-form" name="nochexForm">
+            <script id="ncx-config"
+            
+            ncxField-api_key="nvk492bc510deab4a07ab613300b80f991a"
+            ncxField-merchant_id='Big_Boss_SNKRS'
+            ncxField-amount='{{ total|floatformat:2 }}'
+            ncxField-description= ""
+            ncxField-fullname= ""
+            ncxField-phone= ""
+            ncxField-address=""
+            ncxField-city=""
+            ncxField-postcode=""
+            ncxField-country=""
+            ncxField-states=""
+            ncxField-order_id="" 
+            ncxField-test_transaction="true"
+            ncxField-use_apc="true"
+            ncxField-succes_url ="https://www.mySite.com/succes_page.html"
+            ncxfield-callback_url="https://mywebsite.com/apchandler.php"
+            ></script>
+        </form>
+               
+               
                <!-- Button display if user not logged in -->
                {% else %}
                <p>You must be <a href="{% url 'account_login' %}" >logged in</a>  to checkout!</p>

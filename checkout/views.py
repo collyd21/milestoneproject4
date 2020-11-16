@@ -150,3 +150,82 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def checkout_nochex(request):
+    """ A view to return the nochex checkout  page """
+    if request.method == 'POST':
+        cart = request.session.get('cart', {})
+
+        form_data = {
+            'ncxField-fullname': request.POST['full_name'],
+            'ncxField-email': request.POST['email'],
+            'ncxField-phone': request.POST['phone_number'],
+            'ncxField-country': request.POST['country'],
+            'ncxField-postcode': request.POST['postcode'],
+            'ncxField-town_city': request.POST['town_city'],
+            'ncxField-address': request.POST['address'],
+            'ncxField-address2': request.POST['address2'],
+            'ncxField-county': request.POST['county'],
+        }
+        nochexForm = OrderForm(form_data)
+        if nochexForm.is_valid():
+            order = nochexForm.save()
+            for item_id, item_data in cart.items():
+                try:
+                    comp = Comp.objects.get(id=item_id)
+                    if isinstance(item_data, int):
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            comp=comp,
+                            quantity=item_data,
+                        )
+                        order_line_item.save()
+                except Comp.DoesNotExist:
+                    messages.error(request, (
+                        "One of the competitions in your cart wasn't found in our database. "
+                        "Please call us for assistance!")
+                    )
+                    order.delete()
+                    return redirect(reverse('view_cart'))
+
+            request.session['save_info'] = 'save-info' in request.POST
+            return redirect(reverse('checkout_success', args=[order.order_number]))
+        else:
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')
+            return redirect(reverse('view_cart'))
+    else:
+        cart = request.session.get('cart', {})
+        if not cart:
+            messages.error(request, "You haven't added to your shoebox yet!")
+            return redirect(reverse('comps'))
+
+        current_cart = cart_contents(request)
+        total = current_cart['total']
+
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                nochexForm = OrderForm(initial={
+                    'ncxField-fullname': profile.user.get_full_name(),
+                    'ncxField-email': profile.user.email,
+                    'ncxField-phone': profile.default_phone_number,
+                    'ncxField-country': profile.default_country,
+                    'ncxField-postcode': profile.default_postcode,
+                    'ncxField-town_city': profile.default_town_city,
+                    'ncxField-address': profile.default_address,
+                    'ncxField-address2': profile.default_address2,
+                    'ncxField-county': profile.default_county,
+                })
+            except UserProfile.DoesNotExist:
+                nochexForm = OrderForm()
+        else:
+            nochexForm = OrderForm()
+
+    template = 'checkout/checkout_nochex.html'
+    context = {
+        'nochexForm': nochexForm,
+    }
+
+    return render(request, template, context)
